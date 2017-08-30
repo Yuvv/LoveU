@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Our Love Story</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <style type="text/css">
+    @font-face {
+      font-family: digit;
+      src: url('digital-7_mono.ttf') format("truetype");
+    }
+  </style>
+  <link href="css/default.min.css" type="text/css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/garden.min.js"></script>
+  <script type="text/javascript" src="js/functions.min.js"></script>
+</head>
+
+<body>
+<div id="mainDiv">
+  <div id="content">
+    <div id="code">
+      Boy i = <span class="keyword">new</span> Boy(<span class="string">"me"</span>);<br/>
+      Girl u = <span class="keyword">new</span> Girl(<span class="string">"you"</span>);<br/>
+      <span class="comments">// Apr 21, 2017, I met you. </span><br/>
+      i.met(u);<br/>
+      <span class="comments">// Jun 30, 2017, we fall in love with each other.</span><br/>
+      i.love(u);<br/>
+      u.love(i);<br/>
+      <span class="comments">// Since then, I miss u every day.</span><br/>
+      i.miss(u);<br/>
+      <span class="comments">// And take care of u and our love.</span><br/>
+      i.takeCareOf(u);<br/>
+      <span class="comments">// Although we are thousands of miles away.</span><br/>
+      <span class="keyword">var</span> distance = i.distanceOf(u);<br/>
+      <span class="comments">// When you are by my side, you are everything to me.</span><br/>
+      <span class="keyword">if</span> (distance = <span class="string">"nearby-me"</span>)<br/>
+      <span class="placeholder"></span>i.fillHeartWith(u);<br/>
+      <span class="comments">// When you are not with me, my everything is you.</span><br/>
+      <span class="keyword">if</span> (distance = <span class="string">"faraway-me"</span>)<br/>
+      <span class="placeholder"></span>i.fillHeartWith(u.shadow);<br/>
+      <span class="comments">// A few years later, we will no longer be separated.</span><br/>
+      timeElapse(1.5 * 365 * 24 * 3600);<br/>
+      <span class="comments">// And we will live happily ever after.</span><br/>
+      i.liveHappilyWith(u);<br/>
+    </div>
+
+    <div id="loveHeart">
+      <canvas id="garden"></canvas>
+      <div id="words">
+        <div id="messages">
+          I have fallen in love with you for
+          <div id="elapseClock"></div>
+        </div>
+        <div id="loveu">
+          Love u forever and ever.<br/>
+          <div class="signature">- Yuvv</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script type="text/javascript">
+  var offsetX = $("#loveHeart").width() / 2;
+  var offsetY = $("#loveHeart").height() / 2 - 55;
+  var together = new Date();
+  together.setFullYear(2017, 5, 30); // 2017年6月30日16点在一起
+  together.setHours(16);
+  together.setMinutes(0);
+  together.setSeconds(0);
+  together.setMilliseconds(0);
+
+  if (!document.createElement('canvas').getContext) {
+    var msg = document.createElement("div");
+    msg.id = "errorMsg";
+    msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+    document.body.appendChild(msg);
+    $("#code").css("display", "none")
+    $("#copyright").css("position", "absolute");
+    $("#copyright").css("bottom", "10px");
+    document.execCommand("stop");
+  } else {
+    setTimeout(function () {
+      startHeartAnimation();
+    }, 5000);
+
+    timeElapse(together);
+    setInterval(function () {
+      timeElapse(together);
+    }, 500);
+
+    adjustCodePosition();
+    $("#code").typewriter();
+  }
+</script>
+</body>
+</html>
