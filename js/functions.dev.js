@@ -10,16 +10,16 @@ $(function () {
 	var offsetY = $loveHeart.height() / 2 - 55;
     $garden = $("#garden");
     gardenCanvas = $garden[0];
-	gardenCanvas.width = $("#loveHeart").width();
-    gardenCanvas.height = $("#loveHeart").height();
+	gardenCanvas.width = $loveHeart.width();
+	gardenCanvas.height = $loveHeart.height();
     gardenCtx = gardenCanvas.getContext("2d");
     gardenCtx.globalCompositeOperation = "lighter";
     garden = new Garden(gardenCtx, gardenCanvas);
-	
-	$("#content").css("width", $loveHeart.width() + $("#code").width());
-	$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
-	$("#content").css("margin-top", Math.max(($window.height() - $("#content").height()) / 2, 10));
-	$("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
+
+	//$("#contentDiv").css("width", $loveHeart.width() + $("#code").width());
+	//$("#contentDiv").css("height", Math.max($loveHeart.height(), $("#code").height()));
+	//$("#contentDiv").css("margin-top", Math.max(($window.height() - $("#contentDiv").height()) / 2, 10));
+	//$("#contentDiv").css("margin-left", Math.max(($window.width() - $("#contentDiv").width()) / 2, 10));
 
     // renderLoop
     setInterval(function () {
@@ -110,7 +110,7 @@ function timeElapse(date){
 	if (seconds < 10) {
 		seconds = "0" + seconds;
 	}
-	var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds";
 	$("#elapseClock").html(result);
 }
 
