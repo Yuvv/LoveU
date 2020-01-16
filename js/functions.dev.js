@@ -122,9 +122,9 @@ function showMessages() {
 }
 
 function adjustWordsPosition() {
-	$('#words').css("position", "absolute");
-	$('#words').css("top", $("#garden").position().top + 195);
-	$('#words').css("left", $("#garden").position().left + 70);
+	$('#words').css("position", "absolute")
+		.css("top", 195)
+		.css("left", 70);
 }
 
 function adjustCodePosition() {
@@ -133,4 +133,16 @@ function adjustCodePosition() {
 
 function showLoveU() {
 	$('#loveu').fadeIn(3000);
+}
+
+function switchColorTheme() {
+	if (document.body.classList.contains('dark')) {
+		document.body.classList.remove('dark');
+		document.getElementById('words').classList.remove('dark');
+		document.getElementById('code').classList.remove('dark');
+	} else {
+		document.body.classList.add('dark');
+		document.getElementById('words').classList.add('dark');
+		document.getElementById('code').classList.add('dark');
+	}
 }

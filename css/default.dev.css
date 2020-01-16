@@ -10,6 +10,9 @@ body {
   width: 100%;
   height: 100%;
 }
+body.dark {
+  background: #040f28;
+}
 #mainDiv {
   width: 100%;
   height: 100%;
@@ -27,6 +30,7 @@ body {
 #loveHeart {
   width: 670px;
   height: 625px;
+  position: relative;
 }
 #garden {
   width: 100%;
@@ -43,6 +47,9 @@ body {
   width: 500px;
   font-size: 24px;
   color: #666;
+}
+#words.dark {
+  color: #b9b9b9;
 }
 #messages {
   display: none;
@@ -71,18 +78,27 @@ body {
 #code {
   align-self: center;
   width: 440px;
-  height: 400px;
+  height: 360px;
   color: #333;
   font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New",
     "sans-serif";
   font-size: 12px;
 }
+#code.dark {
+  color: #aaa;
+}
 #code .string {
   color: #2a36ff;
+}
+#code.dark .string {
+  color: #c18341;
 }
 #code .keyword {
   color: #7f0055;
   font-weight: bold;
+}
+#code.dark .keyword {
+  color: #bb4594;
 }
 #code .placeholder {
   margin-left: 15px;
@@ -92,6 +108,9 @@ body {
 }
 #code .comments {
   color: #3f7f5f;
+}
+#code.dark .comments {
+  color: #46554d;
 }
 #copyright {
   margin-top: 10px;
@@ -113,17 +132,23 @@ body {
   color: #666;
 }
 
-@media only screen and (max-height: 1176px) {
-    #loveHeart {
-      margin-top: 10em;
-    }
-    #code {
-      margin-top: 3em;
-    }
-}
 
+/* 竖屏展示 */
 @media only screen and (max-width: 1176px) {
     #code {
       margin-top: 5em;
     }
+  /* 垂直方向空间不足 */
+  @media only screen and (max-height: 1176px) {
+    #mainDiv {
+      align-items: normal;
+    }
+    #loveHeart {
+      margin-top: 8em;
+    }
+    #code {
+      margin-top: 3em;
+    }
+  }
+
 }
