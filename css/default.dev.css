@@ -91,14 +91,14 @@ body.dark {
   color: #2a36ff;
 }
 #code.dark .string {
-  color: #c18341;
+  color: #E6DB74;
 }
 #code .keyword {
   color: #7f0055;
   font-weight: bold;
 }
 #code.dark .keyword {
-  color: #bb4594;
+  color: #F92672;
 }
 #code .placeholder {
   margin-left: 15px;
@@ -110,7 +110,13 @@ body.dark {
   color: #3f7f5f;
 }
 #code.dark .comments {
-  color: #46554d;
+  color: #7E8E91;
+}
+#code .number {
+  color: #AE81FF;
+}
+#code .operator {
+  color: #C97692;
 }
 #copyright {
   margin-top: 10px;
@@ -148,6 +154,7 @@ body.dark {
     }
     #code {
       margin-top: 3em;
+      padding-bottom: 3em;
     }
   }
 

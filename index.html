@@ -11,7 +11,7 @@
     }
   </style>
   <link href="css/default.dev.css" type="text/css" rel="stylesheet">
-  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/garden.dev.js"></script>
   <script type="text/javascript" src="js/functions.dev.js"></script>
 </head>
@@ -57,7 +57,7 @@
       <span class="placeholder"></span>i.fillHeartWith(u.shadow);<br/>
       }<br />
       <span class="comments">// A few years later, we will no longer be separated.</span><br/>
-      timeElapse(1.5 * 365 * 24 * 3600);<br/>
+      timeElapse(<span class="number">1.5</span> * <span class="number">365</span> * <span class="number">24</span> * <span class="number">3600</span>);<br/>
       <span class="comments">// And we will live happily ever after.</span><br/>
       i.liveHappilyWith(u);<br/>
     </div>
@@ -89,7 +89,7 @@
     timeElapse(together);
     setInterval(function () {
       timeElapse(together);
-    }, 300);
+    }, 1000);
 
     //adjustCodePosition();
     $("#code").typewriter();

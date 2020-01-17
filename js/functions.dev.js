@@ -24,7 +24,12 @@ $(function () {
     // renderLoop
     setInterval(function () {
         garden.render();
-    }, Garden.options.growSpeed);
+	}, Garden.options.growSpeed);
+
+	// swithc color theme by time
+	var longitude = 116.46;
+	var latitude = 39.92;
+	getSunsetSunrise(longitude, latitude);
 });
 
 $(window).resize(function() {
@@ -135,14 +140,56 @@ function showLoveU() {
 	$('#loveu').fadeIn(3000);
 }
 
-function switchColorTheme() {
-	if (document.body.classList.contains('dark')) {
-		document.body.classList.remove('dark');
-		document.getElementById('words').classList.remove('dark');
-		document.getElementById('code').classList.remove('dark');
-	} else {
+function switchColorTheme(theme) {
+	if (!theme) {
+		theme = document.body.classList.contains('dark') ? 'light' : 'dark';
+	}
+	if (theme === 'dark') {
 		document.body.classList.add('dark');
 		document.getElementById('words').classList.add('dark');
 		document.getElementById('code').classList.add('dark');
+	} else {
+		document.body.classList.remove('dark');
+		document.getElementById('words').classList.remove('dark');
+		document.getElementById('code').classList.remove('dark');
 	}
+}
+
+/**
+ * 获取日出、日落时间（用简化的公式，忽略额外细微因素）
+ *
+ * @param {float} longitude 经度，度数表示
+ * @param {float} latitude 纬度，度数表示
+ */
+function getSunsetSunrise(longitude, latitude) {
+	var now = new Date();
+	$.get('https://api.sunrise-sunset.org/json', {
+		 lat: latitude,
+		 lng: longitude,
+		 date: now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate(),
+		 formatted: 0
+	}).done(function (resp) {
+		if (resp.status === 'OK') {
+			console.debug(resp.results);
+			var sunset = new Date(resp.results.sunset);
+			var sunrise = new Date(resp.results.sunrise);
+			if (sunrise < now && now < sunset) {
+				switchColorTheme('light');
+			} else {
+				switchColorTheme('dark');
+			}
+		} else {
+			if (now.getHours() >= 17 || now.getHours.getHours() < 7) {
+				switchColorTheme('dark');
+			} else {
+				switchColorTheme('light');
+			}
+		}
+	}).fail(function () {
+		if (now.getHours() >= 17 || now.getHours.getHours() < 7) {
+			switchColorTheme('dark');
+		} else {
+			switchColorTheme('light');
+		}
+	});
 }

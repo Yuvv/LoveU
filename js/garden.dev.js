@@ -162,15 +162,6 @@ Garden.options = {
   },
   density: 10,
   growSpeed: 1000 / 60,
-  color: {
-    rmin: 128,
-    rmax: 255,
-    gmin: 0,
-    gmax: 128,
-    bmin: 0,
-    bmax: 128,
-    opacity: 0.1
-  },
   tanAngle: 60
 };
 Garden.random = function (min, max) {
@@ -200,3 +191,92 @@ Garden.randomrgba = function (rmin, rmax, gmin, gmax, bmin, bmax, a) {
     return Garden.rgba(r, g, b, a);
   }
 };
+
+GARDEN_COLOR_ENUM = Object.freeze({
+  RED: {
+    rmin: 128,
+    rmax: 255,
+    gmin: 0,
+    gmax: 128,
+    bmin: 0,
+    bmax: 128,
+    opacity: 0.1
+  },
+  GREEN: {
+    rmin: 0,
+    rmax: 128,
+    gmin: 128,
+    gmax: 255,
+    bmin: 0,
+    bmax: 128,
+    opacity: 0.1
+  },
+  BLUE: {
+    rmin: 0,
+    rmax: 128,
+    gmin: 0,
+    gmax: 128,
+    bmin: 128,
+    bmax: 255,
+    opacity: 0.15
+  },
+  YELLOW: {
+    rmin: 128,
+    rmax: 255,
+    gmin: 128,
+    gmax: 255,
+    bmin: 0,
+    bmax: 128,
+    opacity: 0.2
+  },
+  CYAN: {
+    rmin: 0,
+    rmax: 128,
+    gmin: 128,
+    gmax: 255,
+    bmin: 128,
+    bmax: 255,
+    opacity: 0.1
+  },
+  MAGENTA: {
+    rmin: 128,
+    rmax: 255,
+    gmin: 0,
+    gmax: 128,
+    bmin: 128,
+    bmax: 255,
+    opacity: 0.1
+  }
+});
+
+// random garden color
+switch (new Date().getTime() % 6) {
+  case 0:
+    console.debug('RED');
+    Garden.options.color = GARDEN_COLOR_ENUM.RED;
+    break;
+  case 1:
+    console.debug('GREEN');
+    Garden.options.color = GARDEN_COLOR_ENUM.GREEN;
+    break;
+  case 2:
+    console.debug('BLUE');
+    Garden.options.color = GARDEN_COLOR_ENUM.BLUE;
+    break;
+  case 3:
+    console.debug('YELLOW');
+    Garden.options.color = GARDEN_COLOR_ENUM.YELLOW;
+    break;
+  case 4:
+    console.debug('CYAN');
+    Garden.options.color = GARDEN_COLOR_ENUM.CYAN;
+    break;
+  case 5:
+    console.debug('MAGENTA');
+    Garden.options.color = GARDEN_COLOR_ENUM.MAGENTA;
+    break;
+  default:
+    console.debug('BLUE');
+    Garden.options.color = GARDEN_COLOR_ENUM.BLUE;
+    break;
+}
